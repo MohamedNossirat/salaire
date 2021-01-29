@@ -7,11 +7,15 @@ public class Representant {
 	private final String prenom;
 	private String adresse;
 	private float salaireFixe;
+        private ZoneGeographique secteur;
+        private float CA;
 
 	public Representant(int numero, String nom, String prenom, ZoneGeographique secteur) {
 		this.numero = numero;
 		this.nom = nom;
 		this.prenom = prenom;
+                this.secteur = secteur;
+                
 	}
 
 	public int getNumero() {
@@ -44,12 +48,13 @@ public class Representant {
 
 	public ZoneGeographique getSecteur() {
 		// TODO: Implémenter cette méthode
-		throw new UnsupportedOperationException("Pas encore implémenté");
+                return secteur;
+		
 	}
 
 	public void setSecteur(ZoneGeographique secteur) {
 		// TODO: Implémenter cette méthode
-		throw new UnsupportedOperationException("Pas encore implémenté");
+                this.secteur.setIndemniteRepas(salaireFixe);
 	}
 
 	/**
@@ -65,8 +70,8 @@ public class Representant {
 		if (montant < 0) {
 			throw new IllegalArgumentException("Le montant doit être positif ou null");
 		}
+                CA = montant;
 		// TODO: Implémenter cette méthode
-		throw new UnsupportedOperationException("Pas encore implémenté");
 	}
 
 	/**
@@ -77,7 +82,8 @@ public class Representant {
 	 */
 	public float salaireMensuel(int mois, float pourcentage) {
 		// TODO: Implémenter cette méthode
-		throw new UnsupportedOperationException("Pas encore implémenté");
+                return salaireFixe+this.secteur.getIndemniteRepas()+CA*pourcentage;
+		
 	}
 
 	@Override
